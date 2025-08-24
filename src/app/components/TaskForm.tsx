@@ -41,7 +41,11 @@ export default function TaskForm({ onAddTask }: TaskFormProps) {
   };
 
   const handleSpeech = () => {
-    if (!speechService.getIsListening()) {
+    if (speechService.getIsListening()) {
+      // Stop listening
+      speechService.stopRecognition();
+    } else {
+      // Start listening
       speechService.startRecognition(
         (text) => {
           setNewTask(text);
@@ -74,7 +78,7 @@ export default function TaskForm({ onAddTask }: TaskFormProps) {
         <Button
           onClick={handleSpeech}
           className={`rounded-full px-4 ${
-            speechService.getIsListening() ? "bg-red-500 hover:bg-red-600" : "bg-blue-500 hover:bg-blue-600"
+            speechService.getIsListening() ? "bg-red-500 hover:bg-red-600 animate-pulse" : "bg-blue-500 hover:bg-blue-600"
           }`}
         >
           {speechService.getIsListening() ? "●" : "🎤"}
