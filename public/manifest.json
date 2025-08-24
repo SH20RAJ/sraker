@@ -1,0 +1,16 @@
+{
+    "name": "Todo Voice App",
+    "short_name": "TodoVoice",
+    "description": "A simple todo app with voice input capabilities",
+    "start_url": "/",
+    "display": "standalone",
+    "background_color": "#ffffff",
+    "theme_color": "#000000",
+    "icons": [
+        {
+            "src": "/next.svg",
+            "sizes": "any",
+            "type": "image/svg+xml"
+        }
+    ]
+}
