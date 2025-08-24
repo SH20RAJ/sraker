@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 
@@ -15,10 +15,13 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "Todo Voice App",
   description: "A simple todo app with voice input capabilities",
-  manifest: "/manifest.json",
+ manifest: "/manifest.json",
   icons: {
     apple: "/next.svg",
   },
+};
+
+export const viewport: Viewport = {
   themeColor: "#000000",
 };
 
@@ -32,7 +35,6 @@ export default function RootLayout({
       <head>
         <meta name="application-name" content="Todo Voice App" />
         <meta name="apple-mobile-web-app-title" content="Todo Voice" />
-        <meta name="theme-color" content="#000" />
         <meta name="description" content="A simple todo app with voice input capabilities" />
         <link rel="manifest" href="/manifest.json" />
         <link rel="apple-touch-icon" href="/next.svg" />
