@@ -36,7 +36,10 @@ export default function TaskItem({ task, onToggle, onArchive }: TaskItemProps) {
               variant="link" 
               size="sm" 
               className="h-auto p-0 text-xs"
-              onClick={() => setIsExpanded(!isExpanded)}
+              onClick={(e) => {
+                e.stopPropagation();
+                setIsExpanded(!isExpanded);
+              }}
             >
               {isExpanded ? "Show less" : "Show more"}
             </Button>
