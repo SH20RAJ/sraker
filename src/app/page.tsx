@@ -72,10 +72,10 @@ export default function Home() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 dark:bg-gray-900 py-8 px-4 sm:px-6">
-      <div className="max-w-md mx-auto bg-white dark:bg-gray-800 rounded-xl shadow-sm p-6 sm:p-8">
+    <div className="min-h-screen bg-background py-8 px-4 sm:px-6">
+      <div className="max-w-md mx-auto rounded-xl shadow-sm p-6 sm:p-8 bg-card text-card-foreground">
         <div className="flex justify-between items-center mb-8">
-          <h1 className="text-2xl font-bold text-gray-800 dark:text-white">Todo Voice</h1>
+          <h1 className="text-2xl font-bold">Todo Voice</h1>
           <div className="flex gap-2">
             <Button 
               variant="outline" 
@@ -91,12 +91,12 @@ export default function Home() {
                   Archive ({archivedTasks.length})
                 </Button>
               </DialogTrigger>
-              <DialogContent className="max-h-[80vh] overflow-y-auto bg-white dark:bg-gray-800">
+              <DialogContent className="max-h-[80vh] overflow-y-auto">
                 <DialogHeader>
-                  <DialogTitle className="text-lg font-semibold text-gray-800 dark:text-white">Archived Tasks</DialogTitle>
+                  <DialogTitle className="text-lg font-semibold">Archived Tasks</DialogTitle>
                 </DialogHeader>
                 {archivedTasks.length === 0 ? (
-                  <p className="text-gray-500 dark:text-gray-400 text-center py-4">No archived tasks yet.</p>
+                  <p className="text-muted-foreground text-center py-4">No archived tasks yet.</p>
                 ) : (
                   <div className="space-y-3">
                     {archivedTasks.map((task) => (
@@ -118,11 +118,11 @@ export default function Home() {
 
         {/* Task List */}
         <div className="mt-8">
-          <h2 className="text-lg font-semibold text-gray-700 dark:text-gray-300 mb-4">Your Tasks</h2>
+          <h2 className="text-lg font-semibold mb-4">Your Tasks</h2>
           {tasks.length === 0 ? (
             <div className="text-center py-10">
-              <p className="text-gray-500 dark:text-gray-400 mb-4">No tasks yet. Add one above!</p>
-              <div className="text-gray-400 dark:text-gray-500 text-sm">
+              <p className="text-muted-foreground mb-4">No tasks yet. Add one above!</p>
+              <div className="text-muted-foreground/80 text-sm">
                 <p>✨ Tap the mic to speak your task</p>
                 <p>✨ Set recurring tasks for daily habits</p>
               </div>

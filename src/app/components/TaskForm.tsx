@@ -11,7 +11,7 @@ import {
   SelectContent,
   SelectItem,
   SelectTrigger,
-  SelectValue,
+ SelectValue,
 } from "@/components/ui/select";
 
 interface TaskFormProps {
@@ -65,7 +65,7 @@ export default function TaskForm({ onAddTask }: TaskFormProps) {
  };
 
   return (
-    <div className="mb-2">
+    <div className="mb-6">
       <div className="flex gap-2 mb-3">
         <Input
           type="text"
@@ -73,12 +73,12 @@ export default function TaskForm({ onAddTask }: TaskFormProps) {
           onChange={(e) => setNewTask(e.target.value)}
           onKeyPress={handleKeyPress}
           placeholder="What do you need to do?"
-          className="flex-grow rounded-full px-4 py-3"
+          className="flex-grow rounded-md"
         />
         <Button
           onClick={handleSpeech}
-          className={`rounded-full px-4 ${
-            speechService.getIsListening() ? "bg-red-500 hover:bg-red-600 animate-pulse" : "bg-blue-500 hover:bg-blue-600"
+          className={`rounded-md px-4 ${
+            speechService.getIsListening() ? "bg-destructive hover:bg-destructive/90 animate-pulse" : "bg-primary hover:bg-primary/90"
           }`}
         >
           {speechService.getIsListening() ? "●" : "🎤"}
@@ -87,9 +87,9 @@ export default function TaskForm({ onAddTask }: TaskFormProps) {
       
       {/* Recurring Task Options */}
       <div className="flex items-center justify-between">
-        <span className="text-sm text-gray-600">Recurring:</span>
+        <span className="text-sm text-muted-foreground">Recurring:</span>
         <Select value={recurringInterval.toString()} onValueChange={(value) => setRecurringInterval(value === "none" ? "none" : value as RecurringInterval)}>
-          <SelectTrigger className="w-[140px] rounded-full">
+          <SelectTrigger className="w-[140px] rounded-md">
             <SelectValue placeholder="Not recurring" />
           </SelectTrigger>
           <SelectContent>
