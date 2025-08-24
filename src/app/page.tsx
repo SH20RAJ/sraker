@@ -14,6 +14,7 @@ import {
 } from "@/components/ui/dialog";
 import ArchivedTaskItem from "./components/ArchivedTaskItem";
 import { useTheme } from "next-themes";
+import { groupTasksByDate, formatDate } from "./utils/taskUtils";
 
 export default function Home() {
   const [tasks, setTasks] = useState<Task[]>([]);
@@ -71,6 +72,9 @@ export default function Home() {
     setTheme(theme === "dark" ? "light" : "dark");
   };
 
+  // Group tasks by date
+  const groupedTasks = groupTasksByDate(tasks);
+
  return (
     <div className="min-h-screen bg-background py-8 px-4 sm:px-6">
       <div className="max-w-md mx-auto rounded-xl shadow-sm p-6 sm:p-8 bg-card text-card-foreground">
@@ -84,8 +88,8 @@ export default function Home() {
               onClick={toggleTheme}
             >
               {theme === "dark" ? (
-                <svg xmlns="http://www.w3.org/200/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
                 </svg>
               ) : (
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -136,16 +140,25 @@ export default function Home() {
               </div>
             </div>
           ) : (
-            <ul className="space-y-3">
-              {tasks.map((task) => (
-                <TaskItem 
-                  key={task.id} 
-                  task={task} 
-                  onToggle={toggleTask} 
-                  onArchive={archiveTask} 
-                />
+            <div className="space-y-6">
+              {groupedTasks.map(({ date, tasks: dateTasks }) => (
+                <div key={date} className="space-y-3">
+                  <h3 className="text-sm font-medium text-muted-foreground pl-1">
+                    {formatDate(date)}
+                  </h3>
+                  <div className="space-y-3">
+                    {dateTasks.map((task) => (
+                      <TaskItem 
+                        key={task.id} 
+                        task={task} 
+                        onToggle={toggleTask} 
+                        onArchive={archiveTask} 
+                      />
+                    ))}
+                  </div>
+                </div>
               ))}
-            </ul>
+            </div>
           )}
         </div>
       </div>
