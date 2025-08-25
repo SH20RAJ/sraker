@@ -18,7 +18,8 @@ export const metadata: Metadata = {
   description: "A simple todo app with voice input capabilities",
   manifest: "/manifest.json",
   icons: {
-    apple: "/next.svg",
+    icon: "/favicon.ico",
+    apple: "/icons/icon-192x192.png",
   },
 };
 
@@ -38,7 +39,8 @@ export default function RootLayout({
         <meta name="apple-mobile-web-app-title" content="Todo Voice" />
         <meta name="description" content="A simple todo app with voice input capabilities" />
         <link rel="manifest" href="/manifest.json" />
-        <link rel="apple-touch-icon" href="/next.svg" />
+        <link rel="icon" href="/favicon.ico" />
+        <link rel="apple-touch-icon" href="/icons/icon-192x192.png" />
         <script src="/registerPWA.js" defer />
       </head>
       <body

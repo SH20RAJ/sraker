@@ -18,11 +18,12 @@ async function generateIcons() {
   
   const inputPath = join(process.cwd(), 'public', 'next.svg');
   const outputPath = join(process.cwd(), 'public', 'icons');
+  const publicPath = join(process.cwd(), 'public');
   
-  // Define icon sizes
+  // Define icon sizes for the manifest
   const sizes = [72, 96, 128, 144, 152, 192, 384, 512];
   
-  // Generate each icon
+  // Generate each icon for the manifest
   for (const size of sizes) {
     try {
       await sharp(inputPath)
@@ -33,6 +34,28 @@ async function generateIcons() {
     } catch (error) {
       console.error(`Error generating icon-${size}x${size}.png:`, error);
     }
+  }
+  
+  // Generate favicon PNG files of different sizes
+  try {
+    const faviconSizes = [16, 32, 48];
+    
+    for (const size of faviconSizes) {
+      await sharp(inputPath)
+        .resize(size, size)
+        .png()
+        .toFile(join(publicPath, `favicon-${size}x${size}.png`));
+    }
+    
+    // Also create a 32x32 favicon.ico file (most browsers will accept a PNG with .ico extension)
+    await sharp(inputPath)
+      .resize(32, 32)
+      .png()
+      .toFile(join(publicPath, 'favicon.ico'));
+      
+    console.log('Generated favicon files');
+  } catch (error) {
+    console.error('Error generating favicon files:', error);
   }
   
   console.log('All icons generated successfully!');
