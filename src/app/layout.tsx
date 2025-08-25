@@ -39,6 +39,7 @@ export default function RootLayout({
         <meta name="description" content="A simple todo app with voice input capabilities" />
         <link rel="manifest" href="/manifest.json" />
         <link rel="apple-touch-icon" href="/next.svg" />
+        <script src="/registerPWA.js" defer />
       </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
