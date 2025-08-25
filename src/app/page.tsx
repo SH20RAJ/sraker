@@ -16,6 +16,8 @@ import { useTheme } from "next-themes";
 import { groupTasksByDate, formatDate } from "./utils/taskUtils";
 import { Input } from "@/components/ui/input";
 import { speechService } from "./services/speechService";
+// Import the offline test
+import { testOfflineSupport } from "./test-offline";
 
 export default function Home() {
   const [tasks, setTasks] = useState<Task[]>([]);
@@ -35,6 +37,9 @@ export default function Home() {
     
     // Set dark mode as default
     setTheme("dark");
+    
+    // Test offline support
+    testOfflineSupport();
   }, [setTheme]);
 
  // Save tasks to localStorage whenever active tasks change
@@ -178,10 +183,10 @@ export default function Home() {
       </div>
 
       {/* Chat Messages */}
-      <div className="flex-1 overflow-y-auto p-4 pb-20">
+      <div className="flex-1 overflow-y-auto p-4 pb-24">
         {tasks.length === 0 ? (
           <div className="flex flex-col items-center justify-center h-full text-center">
-            <p className="text-muted-foreground mb-4">No tasks yet. Add one below!</p>
+            <p className="text-muted-foreground mb-4">No tasks yet. Add one above!</p>
             <div className="text-muted-foreground/80 text-sm">
               <p>✨ Tap the mic to speak your task</p>
               <p>✨ Type and send to add tasks</p>
