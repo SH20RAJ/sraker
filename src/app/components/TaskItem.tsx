@@ -5,6 +5,8 @@ import { Task } from "../services/storageService";
 import { formatInterval } from "../services/taskService";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Button } from "@/components/ui/button";
+// Import Lucide React icons
+import { Archive, ChevronDown, ChevronUp } from 'lucide-react';
 
 interface TaskItemProps {
   task: Task;
@@ -20,7 +22,7 @@ export default function TaskItem({ task, onToggle, onArchive }: TaskItemProps) {
   const displayText = isExpanded || !shouldTruncate ? task.text : task.text.substring(0, 100) + "...";
 
   return (
-    <div className="flex items-center justify-between p-4 rounded-lg border bg-card text-card-foreground">
+    <div className="flex items-center justify-between p-4 rounded-lg border bgcard text-card-foreground">
       <div className="flex items-start flex-1 min-w-0">
         <Checkbox
           checked={task.completed}
@@ -35,13 +37,20 @@ export default function TaskItem({ task, onToggle, onArchive }: TaskItemProps) {
             <Button 
               variant="link" 
               size="sm" 
-              className="h-auto p-0 text-xs"
-              onClick={(e) => {
-                e.stopPropagation();
-                setIsExpanded(!isExpanded);
-              }}
+              className="h-auto p-0 text-xs mt-1"
+              onClick={() => setIsExpanded(!isExpanded)}
             >
-              {isExpanded ? "Show less" : "Show more"}
+              {isExpanded ? (
+                <>
+                  <ChevronUp className="h-3 w-3 mr-1" />
+                  Show less
+                </>
+              ) : (
+                <>
+                  <ChevronDown className="h-3 w-3 mr-1" />
+                  Show more
+                </>
+              )}
             </Button>
           )}
           {task.recurring && (
@@ -57,9 +66,7 @@ export default function TaskItem({ task, onToggle, onArchive }: TaskItemProps) {
         size="sm"
         className="text-muted-foreground hover:text-destructive hover:bg-destructive/10 rounded-full p-2 h-auto ml-2"
       >
-        <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8m-9 4h4" />
-        </svg>
+        <Archive className="h-4 w-4" />
       </Button>
     </div>
   );
