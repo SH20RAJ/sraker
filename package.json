@@ -8,7 +8,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "generate-icons": "node scripts/generate-icons.js"
+    "generate-icons": "node scripts/generate-icons.js",
+    "pages:build": "npm install --legacy-peer-deps && npx @cloudflare/next-on-pages"
   },
   "dependencies": {
     "@radix-ui/react-checkbox": "^1.1.3",
@@ -16,20 +17,22 @@
     "@radix-ui/react-label": "^2.1.1",
     "@radix-ui/react-select": "^2.1.5",
     "@radix-ui/react-slot": "^1.1.1",
+    "@tailwindcss/postcss": "^4.1.12",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "lucide-react": "^0.468.0",
     "next": "15.5.0",
     "next-pwa": "^5.6.0",
     "next-themes": "^0.4.4",
-    "react": "19.0.0-rc-65a56d0e-20241029",
-    "react-dom": "19.0.0-rc-65a56d0e-20241029",
+    "react": "19.0.0-rc-65a56d0e-20241020",
+    "react-dom": "19.0.0-rc-65a56d0e-20241020",
     "sharp": "^0.33.5",
     "tailwind-merge": "^2.5.5",
     "tailwindcss-animate": "^1.0.7"
   },
   "devDependencies": {
-    "@types/node": "^2",
+    "@cloudflare/next-on-pages": "^1.0.0",
+    "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
     "eslint": "^9",
