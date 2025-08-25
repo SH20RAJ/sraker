@@ -1,8 +1,7 @@
 # sraker
 
 ## Tagline
-A modern task manager for the connected and disconnected world
-
+A modern, offline-capable task management application built with Next.js
 
 ## Description
 Sraker is a powerful task management application that helps you organize your daily tasks efficiently. Built with Next.js and featuring Progressive Web App (PWA) capabilities, sraker works seamlessly both online and offline, ensuring your productivity never stops regardless of your connectivity status.
@@ -25,66 +24,27 @@ The application provides a clean, intuitive interface for creating, managing, an
 - **Web Speech API**: For speech-to-text functionality
 - **Local Storage**: Client-side data persistence
 
-## Getting Started
+## Prerequisites
+Before you begin, ensure you have the following installed:
+- Node.js (version 18 or higher)
+- npm, yarn, pnpm, or bun package manager
 
-First, install the dependencies:
+## Setup Instructions
+
+### 1. Install Dependencies
+First, install the project dependencies using one of the following commands:
+
 ```bash
+# Using npm
 npm install
-# or
+
+# Using yarn
 yarn install
-# or
+
+# Using pnpm
 pnpm install
-# or
+
+# Using bun
 bun install
 ```
 
-Then, run the development server:
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
-
-Open [http://localhost:3000](http://localhost:300) with your browser to see the result.
-
-## Building for Production
-
-To create a production build:
-```bash
-npm run build
-# or
-yarn build
-# or
-pnpm build
-# or
-bun build
-```
-
-To start the production server:
-```bash
-npm start
-# or
-yarn start
-# or
-pnpm start
-# or
-bun start
-```
-
-## Learn More
-
-To learn more about the technologies used in this project:
-- [Next.js Documentation](https://nextjs.org/docs)
-- [React Documentation](https://reactjs.org/docs/getting-started.html)
-- [TypeScript Documentation](https://www.typescriptlang.org/docs/)
-- [shadcn/ui Documentation](https://ui.shadcn.com/docs)
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
